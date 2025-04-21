@@ -1,0 +1,57 @@
+/* SearchBar.css */
+.search-container {
+    position: relative;
+    margin: 20px auto;
+    width: 600px;
+  }
+  
+  .search-input {
+    width: 561px;
+    padding: 14px 18px;
+    background: #2a2d31;
+    border: 2px solid #ff4444;
+    border-radius: 10px;
+    color: white;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  .search-results {
+    position: absolute;
+    width: 100%;
+    max-height: 350px; /* Максимальная высота */
+    overflow-y: auto; /* Прокрутка [[5]] */
+    margin: 8px 0 0;
+    padding: 0;
+    list-style: none;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+  
+  /* Стили для прокрутки [[5]] */
+  .search-results::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .search-results::-webkit-scrollbar-track {
+    background: #2a2d31;
+    border-radius: 10px;
+  }
+  
+  .search-results::-webkit-scrollbar-thumb {
+    background: #ff4444;
+    border-radius: 10px;
+  }
+  
+  .search-result-item {
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .search-result-item:hover {
+    background: #333;
+  }
