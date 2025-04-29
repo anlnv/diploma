@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import Component from "./Component";
+import Catalog from "./Catalog";
 
 const yourComponentsData = [
   {
@@ -119,7 +120,7 @@ function App() {
       
       <Routes>
         {/* Главная страница - только поиск */}
-        <Route path="/" element={null} />
+        <Route path="/" element={<Catalog />} />
         
         {/* Страница компонента */}
         <Route 
