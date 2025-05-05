@@ -3,7 +3,8 @@ import './register.css';
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    username: '',
+    firstName: '',
+    lastName: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -36,7 +37,8 @@ const Register = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          username: formData.username,
+          name: formData.firstName,
+          surname: formData.lastName,
           email: formData.email,
           password: formData.password,
         }),
@@ -53,7 +55,8 @@ const Register = () => {
         setSuccess('Регистрация прошла успешно!');
         setError('');
         setFormData({
-          username: '',
+          firstName: '',
+          lastName: '',
           email: '',
           password: '',
           confirmPassword: '',
@@ -78,12 +81,23 @@ const Register = () => {
         {success && <p className="success-message">{success}</p>}
 
         <div className="form-group">
-          <label htmlFor="username">Имя пользователя</label>
+          <label htmlFor="firstName">Имя</label>
           <input
             type="text"
-            id="username"
-            name="username"
-            value={formData.username}
+            id="firstName"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="lastName">Фамилия</label>
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            value={formData.lastName}
             onChange={handleChange}
             required
           />

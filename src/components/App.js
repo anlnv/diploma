@@ -199,7 +199,7 @@ function App() {
         ) : (
           <>
         {/* Главная страница - только поиск */}
-        <Route path="/" element={<Catalog />} />
+        <Route path="/catalog" element={<Catalog />} />
         <Route path="/settings" element={
                 <div>
                   <Settings profileData={profileData} />
