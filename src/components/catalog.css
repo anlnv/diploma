@@ -1,83 +1,5 @@
-/*.catalog {
-    background: #1a1a1a;
-    border-radius: 12px;
-    padding: 20px;
-    max-width: 600px;
-    margin: 20px auto;
-    width: 560px;
-    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #e0e0e0;
-  }
-  
-  .catalog__classes,
-  .catalog__groups,
-  .catalog__subgroups {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .catalog__item {
-    padding: 8px 12px;
-    cursor: pointer;
-    position: relative;
-  }
-  
-  .catalog__item--class {
-    font-weight: 600;
-    color: #ff4444;
-    border-bottom: 1px solid #333;
-  }
-  
-  .catalog__item--class:hover {
-    background: rgba(255, 68, 68, 0.1);
-  }
-  
-  .catalog__groups {
-    position: absolute;
-    top: 0;
-    left: 100%;
-    background: #1a1a1a;
-    border-radius: 8px;
-    min-width: 200px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    padding: 8px 0;
-    z-index: 10;
-  }
-  
-  .catalog__item--group {
-    color: #ff6666;
-    border-bottom: 1px solid #333;
-  }
-  
-  .catalog__item--group:hover {
-    background: rgba(255, 102, 102, 0.1);
-  }
-  
-  .catalog__subgroups {
-    position: absolute;
-    top: 0;
-    left: 100%;
-    background: #1a1a1a;
-    border-radius: 8px;
-    min-width: 180px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    padding: 8px 0;
-    z-index: 20;
-  }
-  
-  .catalog__item--subgroup {
-    padding: 6px 12px;
-    color: #ffffff;
-    border-bottom: 1px solid #333;
-  }
-  
-  .catalog__item--subgroup:hover {
-    background: rgba(255, 255, 255, 0.1);
-  }*/
 
-  .catalog-container {
+  /*.catalog-container {
     display: flex;
     gap: 16px;
     padding: 20px;
@@ -166,7 +88,6 @@
     background: rgba(255,85,85,0.3);
   }
   
-  /* Scrollbar */
   .catalog-list::-webkit-scrollbar {
     width: 6px;
   }
@@ -179,4 +100,103 @@
   .catalog-list::-webkit-scrollbar-track {
     background-color: #1e1e1e;
   }
+  */
+
+  .catalog-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    height: calc(100vh - 40px);
+    background-color: rgba(18, 20, 23, 1);
+    margin: 20px 45px;
+  }
+  
+  .catalog-sidebar {
+    background-color: #2a2d31;
+    border-radius: 8px;
+    padding: 16px;
+    overflow-y: auto; 
+    transition: transform 0.3s ease;
+  }
+  
+  .catalog-title {
+    color: #ff4444;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+  }
+  
+  .catalog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .catalog-item {
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    position: relative; /* Убедимся, что элементы не выходят за границы */
+    background-color: transparent; /* Убираем лишний фон */
+  }
+  
+  .catalog-item:hover,
+  .catalog-item.active {
+    background-color: #ff4444;
+    transform: translateX(10px);
+  }
+  
+  .arrow {
+    transition: transform 0.3s ease;
+    color: #ff6b6b;
+  }
+  
+  .arrow.visible {
+    visibility: visible; /* Показываем стрелку, если есть дочерние элементы */
+    transform: rotate(90deg);
+  }
+  
+  .powers-list {
+    margin-left: 20px;
+    margin-top: 8px;
+  }
+  
+  .power-item {
+    padding: 8px;
+    background-color: #3a3e42;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .power-item:hover {
+    background-color: #ff6b6b;
+  }
+
+  .catalog-sidebar {
+    overflow-y: auto; /* Включаем вертикальную прокрутку */
+  }
+  
+  .catalog-sidebar::-webkit-scrollbar {
+    width: 8px; /* Ширина скроллбара */
+  }
+  
+  .catalog-sidebar::-webkit-scrollbar-track {
+    background: #2a2d31; /* Цвет фона скроллбара */
+    border-radius: 4px;
+  }
+  
+  .catalog-sidebar::-webkit-scrollbar-thumb {
+    background: #ff4444; /* Цвет "бегунка" скроллбара */
+    border-radius: 4px;
+  }
+  
+  .catalog-sidebar::-webkit-scrollbar-thumb:hover {
+    background: #ff6b6b; /* Цвет "бегунка" при наведении */
+  }
+
   

@@ -1,0 +1,91 @@
+.admin-user-list {
+    color: #ffffff;
+    margin: 20px auto;
+    min-height: 100vh;
+    width: 1000px;
+  }
+  /*.admin-user-list {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    padding: 20px;
+    min-height: 100vh;
+  }*/
+  
+  .admin-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #ff4444;
+  }
+  
+  .user-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #2a2d31;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .user-table th,
+  .user-table td {
+    padding: 12px;
+    text-align: center; /* Выравнивание текста по центру */
+    border-bottom: 1px solid #ff4444;
+  }
+  
+  .user-table th {
+    background-color: #ff4444;
+    color: #ffffff;
+    font-weight: bold;
+  }
+  
+  .user-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  /* Стили для тумблера */
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+  }
+  
+  .toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f44336; /* Красный цвет для выключенного состояния */
+    transition: 0.4s;
+    border-radius: 24px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: '';
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #4caf50; /* Зеленый цвет для включенного состояния */
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }

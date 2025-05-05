@@ -1,7 +1,13 @@
-import { Route, Routes } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import Component from "./Component";
 import Catalog from "./Catalog";
+import Register from "./Register";
+import Login from "./Login";
+import Header from "./Header";
+import AdminUserList from "./AdminUserList";
+import Settings from "./Settings";
 
 const yourComponentsData = [
   {
@@ -113,20 +119,100 @@ const yourComponentsData = [
 ];
 
 function App() {
+  const [profileData, setProfileData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAuthChecked, setIsAuthChecked] = useState(false);
+
+  const navigate = useNavigate();
+  const API_BASE_URL = 'http://213.171.29.113:5000';
+  /*const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;*/
+
+  const checkAuth = async () => {
+    const token = localStorage.getItem("token");
+    
+    if (token) {
+      try {
+        const response = await fetch( `${API_BASE_URL}/user/me`, {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${token}`,
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setProfileData(data);
+          setIsLoggedIn(true);
+        } else {
+          localStorage.removeItem("token");
+        }
+      } catch (err) {
+        console.error("Ошибка проверки авторизации:", err);
+        localStorage.removeItem("token");
+      }
+    }
+    setIsAuthChecked(true);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    checkAuth();
+  }, []);
+
+  const handleLoginSuccess = (token) => {
+    localStorage.setItem("token", token);
+    setIsLoggedIn(true);
+    checkAuth();
+    navigate("/");
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+    setProfileData(null);
+    navigate("/login");
+  };
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+
+
   return (
     <div className="page">
-      {/* Поиск доступен на всех страницах */}
-      <SearchBar components={yourComponentsData} />
-      
+      {isLoggedIn && <Header onLogout={handleLogout} />}
       <Routes>
+        {!isLoggedIn ? (
+          <>
+            {isAuthChecked && (
+              <>
+                <Route
+                  path="/login"
+                  element={<Login onLoginSuccess={handleLoginSuccess} />}
+                />
+                <Route path="/register" element={<Register />} />
+                <Route path="*" element={<Navigate to="/login" />} />
+              </>
+            )}
+          </>
+        ) : (
+          <>
         {/* Главная страница - только поиск */}
         <Route path="/" element={<Catalog />} />
-        
+        <Route path="/settings" element={
+                <div>
+                  <Settings profileData={profileData} />
+                </div>
+              }/>
         {/* Страница компонента */}
         <Route 
           path="/component/:id" 
           element={<Component components={yourComponentsData}/>} 
         />
+        <Route path="/admin-list" element={<AdminUserList />} />
+        </>
+        )}
       </Routes>
     </div>
   );

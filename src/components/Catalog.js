@@ -485,91 +485,98 @@ const catalogData = [
 ];
 
 export default function Catalog() {
-    const [selectedClass, setSelectedClass] = useState(null);
-    const [selectedGroup, setSelectedGroup] = useState(null);
-    const [expandedSubgroup, setExpandedSubgroup] = useState(null);
-  
-    return (
-      <div className="catalog-container">
-        {/* Столбец классов */}
+  const [selectedClass, setSelectedClass] = useState(null);
+  const [selectedGroup, setSelectedGroup] = useState(null);
+  const [expandedSubgroup, setExpandedSubgroup] = useState(null);
+
+  return (
+    <div className="catalog-container">
+      {/* Столбец классов */}
+      <div className="catalog-sidebar">
+        <h3 className="catalog-title">Классы</h3>
+        <div className="catalog-list">
+          {catalogData.map((cls, i) => (
+            <div
+              key={i}
+              className={`catalog-item ${selectedClass === i ? 'active' : ''}`}
+              onClick={() => {
+                setSelectedClass(i);
+                setSelectedGroup(null);
+                setExpandedSubgroup(null);
+              }}
+            >
+              <span>{cls.className}</span>
+              {/* Проверяем наличие групп */}
+              {cls.groups && cls.groups.length > 0 && (
+                <span className={`arrow ${selectedClass === i ? 'visible' : ''}`}>▶</span>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Столбец групп */}
+      {selectedClass !== null && catalogData[selectedClass]?.groups && (
         <div className="catalog-sidebar">
-          <h3 className="catalog-title">Классы</h3>
+          <h3 className="catalog-title">Группы</h3>
           <div className="catalog-list">
-            {catalogData.map((cls, i) => (
+            {catalogData[selectedClass].groups.map((grp, j) => (
               <div
-                key={i}
-                className={`catalog-item ${selectedClass === i ? 'active' : ''}`}
+                key={j}
+                className={`catalog-item ${selectedGroup === j ? 'active' : ''}`}
                 onClick={() => {
-                  setSelectedClass(i);
-                  setSelectedGroup(null);
+                  setSelectedGroup(j);
                   setExpandedSubgroup(null);
                 }}
               >
-                <span>{cls.className}</span>
-                <span className={`arrow ${selectedClass === i ? 'visible' : ''}`}>▶</span>
+                <span>{grp.groupName}</span>
+                {/* Проверяем наличие подгрупп */}
+                {grp.subgroups && grp.subgroups.length > 0 && (
+                  <span className={`arrow ${selectedGroup === j ? 'visible' : ''}`}>▶</span>
+                )}
               </div>
             ))}
           </div>
         </div>
-  
-        {/* Столбец групп */}
-        {selectedClass !== null && catalogData[selectedClass]?.groups && (
-          <div className="catalog-sidebar">
-            <h3 className="catalog-title">Группы</h3>
-            <div className="catalog-list">
-              {catalogData[selectedClass].groups.map((grp, j) => (
+      )}
+
+      {/* Столбец подгрупп */}
+      {selectedGroup !== null &&
+       catalogData[selectedClass]?.groups?.[selectedGroup]?.subgroups && (
+        <div className="catalog-sidebar">
+          <h3 className="catalog-title">Подгруппы</h3>
+          <div className="catalog-list">
+            {catalogData[selectedClass].groups[selectedGroup].subgroups.map((sub, k) => (
+              <div key={k}>
                 <div
-                  key={j}
-                  className={`catalog-item ${selectedGroup === j ? 'active' : ''}`}
+                  className={`catalog-item ${expandedSubgroup === k ? 'active' : ''}`}
                   onClick={() => {
-                    setSelectedGroup(j);
-                    setExpandedSubgroup(null);
+                    if (sub.classification) {
+                      setExpandedSubgroup(expandedSubgroup === k ? null : k);
+                    }
                   }}
                 >
-                  <span>{grp.groupName}</span>
-                  <span className={`arrow ${selectedGroup === j ? 'visible' : ''}`}>▶</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-  
-        {/* Столбец подгрупп */}
-        {selectedGroup !== null && 
-         catalogData[selectedClass]?.groups?.[selectedGroup]?.subgroups && (
-          <div className="catalog-sidebar">
-            <h3 className="catalog-title">Подгруппы</h3>
-            <div className="catalog-list">
-              {catalogData[selectedClass].groups[selectedGroup].subgroups.map((sub, k) => (
-                <div key={k}>
-                  <div
-                    className={`catalog-item ${expandedSubgroup === k ? 'active' : ''}`}
-                    onClick={() => {
-                      if (sub.classification) {
-                        setExpandedSubgroup(expandedSubgroup === k ? null : k);
-                      }
-                    }}
-                  >
-                    <span>{sub.name}</span>
-                    <span className={`arrow ${expandedSubgroup === k ? 'visible' : ''}`}>
-                      {sub.classification ? '▶' : ''}
-                    </span>
-                  </div>
-                  {/* Вложенные классификации */}
-                  {expandedSubgroup === k && sub.classification && (
-                    <div className="powers-list">
-                      {sub.classification.map((power, p) => (
-                        <div key={p} className="power-item">
-                          {power}
-                        </div>
-                      ))}
-                    </div>
+                  <span>{sub.name}</span>
+                  {/* Проверяем наличие дополнительной классификации */}
+                  {sub.classification && sub.classification.length > 0 && (
+                    <span className={`arrow ${expandedSubgroup === k ? 'visible' : ''}`}>▶</span>
                   )}
                 </div>
-              ))}
-            </div>
+                {/* Вложенные классификации */}
+                {expandedSubgroup === k && sub.classification && (
+                  <div className="powers-list">
+                    {sub.classification.map((power, p) => (
+                      <div key={p} className="power-item">
+                        {power}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
-        )}
-      </div>
-    );
-  }
+        </div>
+      )}
+    </div>
+  );
+}

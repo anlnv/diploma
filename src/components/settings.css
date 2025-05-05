@@ -1,0 +1,89 @@
+.settings-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    margin-top: 50px;
+  }
+  
+  .settings-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #ff4444;
+  }
+  
+  .settings-tabs {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .tab-button {
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 1px solid #ff4444;
+    border-radius: 4px;
+    color: #ff4444;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .tab-button.active {
+    background-color: #ff4444;
+    color: #ffffff;
+  }
+  
+  .settings-form {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #2a2d31;
+    border-radius: 8px;
+  }
+  
+  .form-group {
+    margin-bottom: 16px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: #ff6b6b;
+  }
+  
+  .form-group input {
+    width: 93%;
+    padding: 12px;
+    border: 1px solid #ff4444;
+    border-radius: 7px;
+    background-color: transparent;
+    color: #ffffff;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-group input:focus {
+    border-color: #ff6b6b;
+    outline: none;
+  }
+  
+  .save-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #ff4444;
+    border: none;
+    border-radius: 20px;
+    color: #ffffff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .save-button:hover {
+    background-color: #ff6b6b;
+  }
