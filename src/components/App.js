@@ -8,6 +8,7 @@ import Login from "./Login";
 import Header from "./Header";
 import AdminUserList from "./AdminUserList";
 import Settings from "./Settings";
+import UserRequests from "./UserRequests";
 
 const yourComponentsData = [
   {
@@ -200,6 +201,7 @@ function App() {
           <>
         {/* Главная страница - только поиск */}
         <Route path="/catalog" element={<Catalog />} />
+        <Route path="/myrequests" element={<UserRequests profileData={profileData} />} />
         <Route path="/settings" element={
                 <div>
                   <Settings profileData={profileData} />
