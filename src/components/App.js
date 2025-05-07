@@ -9,6 +9,7 @@ import Header from "./Header";
 import AdminUserList from "./AdminUserList";
 import Settings from "./Settings";
 import UserRequests from "./UserRequests";
+import ExpertRequests from "./ExpertRequests";
 
 const yourComponentsData = [
   {
@@ -213,6 +214,7 @@ function App() {
           element={<Component components={yourComponentsData}/>} 
         />
         <Route path="/admin-list" element={<AdminUserList />} />
+        <Route path="/requests" element={<ExpertRequests />} />
         </>
         )}
       </Routes>
