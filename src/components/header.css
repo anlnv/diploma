@@ -6,10 +6,9 @@
     border-bottom: #ff4444 solid 1px;
     color: #ffffff;
     height: 60px;
-    /*width: 1600px;*/
   }
   
-  /* Левая часть: Логотип и название */
+
   .header-left {
     display: flex;
     align-items: center;
@@ -32,7 +31,7 @@
     margin: 0;
   }
   
-  /* Правая часть: Ссылки и кнопки */
+ 
   .header-right {
     display: flex;
     align-items: center;
@@ -63,4 +62,24 @@
   
   .header-button:hover {
     background-color: #ff6b6b;
+  }
+
+  /* Выделение ссылок для администратора */
+.admin-link {
+    color: #ff4444; /* Цвет текста для ссылок администратора */
+    font-weight: bold; /* Жирный шрифт */
+  }
+  
+  .admin-link:hover {
+    color: #ff6b6b; /* Цвет текста при наведении */
+  }
+  
+  /* Выделение ссылок для эксперта */
+  .expert-link {
+    color: #44aaff; /* Цвет текста для ссылок эксперта */
+    font-weight: bold; /* Жирный шрифт */
+  }
+  
+  .expert-link:hover {
+    color: #6bbfff; /* Цвет текста при наведении */
   }

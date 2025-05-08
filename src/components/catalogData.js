@@ -1,4 +1,4 @@
-const catalogData = [
+export const catalogData = [
     {
         className: 'Микросхемы интегральные',
         groups: [

@@ -99,7 +99,8 @@
     text-align: center;
     margin-bottom: 16px;
   }*/
-  .auth-container {
+ /* Главный контейнер */
+.login-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -110,21 +111,24 @@
     margin: auto;
   }
   
-  .auth-title {
+  /* Заголовок формы */
+  .login-title {
     text-align: center;
     margin-bottom: 20px;
     font-size: 1.5rem;
     color: #ff4444;
   }
   
-  .auth-error {
+  /* Сообщение об ошибке */
+  .login-error {
     color: #ff4444;
     font-size: 0.9rem;
     text-align: center;
     margin-bottom: 16px;
   }
   
-  .auth-form {
+  /* Форма входа */
+  .login-form {
     width: 100%;
     max-width: 400px;
     padding: 20px;
@@ -132,18 +136,21 @@
     border-radius: 8px;
   }
   
-  .auth-input-group {
+  /* Группа полей ввода */
+  .login-input-group {
     margin-bottom: 16px;
   }
   
-  .auth-label {
+  /* Лейбл для поля ввода */
+  .login-label {
     display: block;
     margin-bottom: 8px;
     font-size: 0.9rem;
     color: #ff6b6b;
   }
   
-  .auth-input {
+  /* Поле ввода */
+  .login-input {
     width: 94%;
     padding: 12px;
     border: 1px solid #ff4444;
@@ -154,12 +161,13 @@
     transition: border-color 0.3s ease;
   }
   
-  .auth-input:focus {
+  .login-input:focus {
     border-color: #ff6b6b;
     outline: none;
   }
   
-  .auth-button {
+  /* Кнопка отправки формы */
+  .login-button {
     width: 100%;
     padding: 12px;
     background-color: #ff4444;
@@ -171,24 +179,25 @@
     transition: background-color 0.3s ease;
   }
   
-  .auth-button:hover {
+  .login-button:hover {
     background-color: #ff6b6b;
   }
   
-  .auth-footer {
+  /* Ссылка в нижней части формы */
+  .login-footer {
     margin-top: 20px;
     text-align: center;
     font-size: 0.9rem;
     color: #ffffff;
   }
   
-  .auth-link {
+  .login-link {
     color: #ff4444;
     text-decoration: none;
     cursor: pointer;
     transition: color 0.3s ease;
   }
   
-  .auth-link:hover {
+  .login-link:hover {
     color: #ff6b6b;
   }

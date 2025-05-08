@@ -72,25 +72,11 @@
     outline: none;
   }
   
- /* .save-button {
-    width: 100%;
-    padding: 12px;
-    background-color: #ff4444;
-    border: none;
-    border-radius: 20px;
-    color: #ffffff;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .save-button:hover {
-    background-color: #ff6b6b;
-  }*/
+
 
   .save-button:disabled {
-    background-color: #888; /* Серый цвет для неактивной кнопки */
-    cursor: not-allowed; /* Указатель "не разрешено" */
+    background-color: #888; 
+    cursor: not-allowed; 
   }
   
   .save-button {

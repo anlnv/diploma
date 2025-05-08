@@ -1,12 +1,12 @@
 .card-container {
-    background: #1a1a1a;
+    background: #2a2d31;
     border-radius: 12px;
-    padding: 20px;
+    padding: 10px 20px;
     max-width: 600px;
-    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
+    /*box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);*/
     color: #e0e0e0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 20px auto;
+    margin: auto;
     width: 560px;
   }
   
@@ -14,7 +14,8 @@
     color: #ff4444;
     border-bottom: 2px solid #ff6666;
     padding-bottom: 0.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 10px;
+    margin-top: 10px;
   }
   
   .section {
@@ -27,27 +28,34 @@
     margin-bottom: 0.8rem;
   }
   
+  /* Базовый стиль для элементов списка */
   .data-list {
     list-style: none;
-    padding-left: 0;
-    line-height: 1.6;
+    padding: 0;
+    margin: 0;
   }
   
   .data-item {
     display: flex;
-    justify-content: space-between;
-    padding: 0.4rem 0;
-    border-bottom: 1px solid #333;
+    justify-content: space-between; /* Размещение меток и значений по краям */
+    align-items: flex-start; /* Выравнивание по верху */
+    margin-bottom: 8px;
+    padding-bottom: 8px; /* Отступ снизу для подчеркивания */
+    border-bottom: 1px solid rgba(1, 1, 1, 0.6); /* Полупрозрачная линия */
   }
   
   .label {
-    color: #b3b3b3;
+    font-weight: bold;
+    min-width: 120px; /* Фиксированная ширина для меток */
+    text-align: left; /* Выравнивание меток слева */
+    margin-right: 16px;
   }
   
   .value {
-    font-weight: 500;
-    color: #ffffff;
+    flex: 1;
+    max-width: calc(50% - 136px); /* Максимальная ширина значения (половина строки минус отступы) */
+    word-wrap: break-word; /* Перенос слов при необходимости */
+    overflow-wrap: break-word; /* Современный аналог word-wrap */
+    white-space: normal; /* Разрешить перенос текста */
+    text-align: right; /* Выравнивание значений справа */
   }
-  
-  
-  

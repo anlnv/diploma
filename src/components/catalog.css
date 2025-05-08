@@ -199,4 +199,70 @@
     background: #ff6b6b; /* Цвет "бегунка" при наведении */
   }
 
-  
+/* Стили для контейнера списка элементов */
+.components-list { /* Отступ слева для отделения от других колонок */
+  padding: 16px; /* Внутренние отступы */
+  background-color: #2a2d31; /* Темный фон */
+  border-radius: 8px; /* Закругление углов */
+  max-width: 400px; /* Максимальная ширина */
+  color: #ffffff; /* Цвет текста */
+}
+
+/* Заголовок списка элементов */
+.components-list h3 {
+  font-size: 1.2rem; /* Размер шрифта */
+  font-weight: bold; /* Жирный текст */
+  color: #ff4444; /* Акцентный цвет */
+  margin-bottom: 16px; /* Отступ снизу */
+}
+
+/* Список элементов */
+.components-list ul {
+  list-style: none; /* Убираем маркеры списка */
+  padding: 0; /* Убираем отступы */
+  margin: 0; /* Убираем отступы */
+}
+
+/* Элемент списка */
+.components-list li.component-item {
+  padding: 12px; /* Внутренние отступы */
+  margin-bottom: 8px; /* Отступ между элементами */
+  border-radius: 4px; /* Закругление углов */
+  cursor: pointer; /* Курсор указывает на кликабельность */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Плавный переход */
+  background-color: #1a1a1a; /* Фон элемента */
+  color: #cccccc; /* Цвет текста */
+}
+
+/* Эффект наведения на элемент списка */
+.components-list li.component-item:hover {
+  background-color: #ff4444; /* Акцентный фон */
+  color: #ffffff; /* Белый текст */
+  transform: scale(1.02); /* Легкое увеличение */
+}
+
+/* Активный элемент (при необходимости) */
+.components-list li.component-item.active {
+  background-color: #ff4444; /* Акцентный фон */
+  font-weight: bold; /* Жирный текст */
+}
+
+/* Ограничение высоты списка с прокруткой */
+.components-list ul.scrollable {
+  max-height: 350px; /* Максимальная высота */
+  overflow-y: auto; /* Вертикальная прокрутка */
+}
+
+/* Стиль полосы прокрутки */
+.components-list ul.scrollable::-webkit-scrollbar {
+  width: 8px; /* Ширина полосы прокрутки */
+}
+
+.components-list ul.scrollable::-webkit-scrollbar-thumb {
+  background-color: #ff4444; /* Цвет бегунка */
+  border-radius: 4px; /* Закругление бегунка */
+}
+
+.components-list ul.scrollable::-webkit-scrollbar-track {
+  background-color: #1a1a1a; /* Цвет фона полосы прокрутки */
+}

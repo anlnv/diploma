@@ -183,7 +183,7 @@ function App() {
 
   return (
     <div className="page">
-      {isLoggedIn && <Header onLogout={handleLogout} />}
+      {isLoggedIn && <Header profileData={profileData} onLogout={handleLogout} />}
       <Routes>
         {!isLoggedIn ? (
           <>

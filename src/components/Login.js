@@ -134,7 +134,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './login.css';
 
-const API_BASE_URL = 'http://213.171.29.113:5000'; // Замените на ваш URL
+const API_BASE_URL = 'http://213.171.29.113:5000';
 
 function Login({ onLoginSuccess }) {
   const [username, setUsername] = useState('');
@@ -183,38 +183,37 @@ function Login({ onLoginSuccess }) {
   };
 
   return (
-    <div className="auth-container">
-      
-      {error && <p className="auth-error">{error}</p>}
-      <form onSubmit={handleLogin} className="auth-form">
-      <h2 className="auth-title">Вход</h2>
-        <div className="auth-input-group">
-          <label className="auth-label">Имя пользователя:</label>
+    <div className="login-container">
+      {error && <p className="login-error">{error}</p>}
+      <form onSubmit={handleLogin} className="login-form">
+        <h2 className="login-title">Вход</h2>
+        <div className="login-input-group">
+          <label className="login-label">Имя пользователя:</label>
           <input
-            className="auth-input"
+            className="login-input"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
         </div>
-        <div className="auth-input-group">
-          <label className="auth-label">Пароль:</label>
+        <div className="login-input-group">
+          <label className="login-label">Пароль:</label>
           <input
-            className="auth-input"
+            className="login-input"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
-        <button type="submit" className="auth-button">
+        <button type="submit" className="login-button">
           Войти
         </button>
       </form>
-      <p className="auth-footer">
+      <p className="login-footer">
         Нет аккаунта?{' '}
-        <span className="auth-link" onClick={() => navigate('/register')}>
+        <span className="login-link" onClick={() => navigate('/register')}>
           Зарегистрироваться
         </span>
       </p>
