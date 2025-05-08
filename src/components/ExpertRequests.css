@@ -114,7 +114,7 @@
     color: #ff4444;
   }
 
-  label {
+  .expert-requests__label {
     display: block;
     margin-bottom: 5px;
     height: 75px;
@@ -224,6 +224,30 @@
   .cancel-button:hover {
     background-color: #333;
   }
+  .add-component-button-wrapper {
+    display: flex;
+    justify-content: center; /* Центрируем по горизонтали */
+    margin-bottom: 20px;
+  }
+  
+  .add-component-button {
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: #2ded73; /* Ярко-зелёный */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .add-component-button:hover {
+    background-color: #28c161; /* Тёмно-зелёный при наведении */
+    transform: translateY(-2px);
+  }
+  
+
 
   /* Общие стили */
 /*body {
