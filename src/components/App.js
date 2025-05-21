@@ -167,7 +167,7 @@ function App() {
     localStorage.setItem("token", token);
     setIsLoggedIn(true);
     checkAuth();
-    navigate("/");
+    navigate("/catalog");
   };
 
   const handleLogout = () => {
@@ -201,7 +201,13 @@ function App() {
         ) : (
           <>
         {/* Главная страница - только поиск */}
-        <Route path="/catalog" element={<Catalog />} />
+        <Route path="/" element={<Navigate to="/catalog" />} />
+        <Route path="/catalog" element={
+                        <>
+                            <SearchBar />
+                            <Catalog />
+                        </>
+                    } />
         <Route path="/myrequests" element={<UserRequests profileData={profileData} />} />
         <Route path="/settings" element={
                 <div>
