@@ -1022,6 +1022,7 @@ const ExpertRequests = () => {
 export default ExpertRequests;*/
 
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './ExpertRequests.css';
 import { catalogData } from './catalogData';
 
@@ -1031,6 +1032,8 @@ const ExpertRequests = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
+
+   const navigate = useNavigate();
 
   // Форма для классификации
   const [form, setForm] = useState({
@@ -1196,7 +1199,7 @@ const ExpertRequests = () => {
               </div>
             ))
           : requests.filter((req) => !req.is_active).map((req) => (
-              <div key={req.id} className="request-item inactive">
+              <div key={req.id} className="request-item inactive" onClick={() => navigate(`/component/${req.id}`)}>
                 <p className="request-name">{req.name}</p>
                 <p className="request-date">{new Date(req.created_at).toLocaleDateString()}</p>
               </div>

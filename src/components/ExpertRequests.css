@@ -30,8 +30,8 @@
   
   .tab-button.active {
     color: #fff;
-    background-color: #ff4444;
-    border-color: #ff4444;
+   background-color: #3290f4; /* Синий акцент */
+  border-color: #007bff;
   }
   
 
@@ -42,25 +42,29 @@
   }
   
   .request-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    background-color: #333;
-    border: 1px solid #444;
-    border-radius: 8px;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: #35383e; /* Начальный фон */
+  border: 1px solid #444; /* Темно-серая граница */
+  border-radius: 8px;
+  transition: 
+    transform 0.2s ease, 
+    background 0.2s ease, /* Плавное изменение фона */
+    box-shadow 0.2s ease; /* Плавное изменение тени */
   }
   
   .request-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
+    transform: translateY(-2px); /* Легкое смещение вверх */
+  background: #323844; /* Цвет фона при наведении */
+  box-shadow: 0 4px 12px rgba(21, 36, 115, 0.2);
   }
   
   .request-item.inactive {
-    cursor: default;
     opacity: 0.7;
+    cursor: pointer;
   }
   
   
@@ -235,16 +239,15 @@
     font-size: 1rem;
     font-weight: 600;
     color: #fff;
-    background-color: #2ded73; /* Ярко-зелёный */
+    background-color: #30c868; /* Ярко-зелёный */
     border: none;
-    border-radius: 10px;
+    border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
   }
   
   .add-component-button:hover {
-    background-color: #28c161; /* Тёмно-зелёный при наведении */
-    transform: translateY(-2px);
+    background-color: #237a43; /* Тёмно-зелёный при наведении */
   }
   
 

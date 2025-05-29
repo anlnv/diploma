@@ -24,9 +24,9 @@
     margin: 8px 0 0;
     padding: 0;
     list-style: none;
-    background: #1a1a1a;
-    border: 1px solid #333;
-    border-radius: 6px;
+    background: #2a2d31;
+    border: 1px solid #e2d8d8;
+    border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     z-index: 1000;
   }
@@ -61,15 +61,14 @@
   top: 100%;
   left: 0;
   right: 0;
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+    background: #2a2d31;
+    border: 1px solid #e2d8d8;
+    border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   padding: 15px;
   text-align: center;
   font-size: 1rem;
-  color: #333;
 }
 
 .no-results-message p {
