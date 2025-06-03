@@ -9,7 +9,6 @@
     color: #fff;
   }
   
-  
   .tabs {
     display: flex;
     gap: 20px;
@@ -67,117 +66,119 @@
     cursor: pointer;
   }
   
-  
-  .popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .popup {
-    background: #2a2d31;
-    padding: 30px;
-    border-radius: 12px;
-    width: 90%;
-    max-width: 600px;
-    max-height: 80vh;
-    overflow-y: auto; 
-    text-align: left;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-  }
-  
-  .popup h3 {
-    margin-bottom: 20px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #ff4444;
-  }
-  
-  .classification-form.two-columns {
-    display: flex;
-    gap: 30px;
-    margin-bottom: 20px;
-  }
-  
-  .column {
-    flex: 1;
-  }
-  
-  .column h4 {
-    margin: 0;
-    margin-bottom: 10px;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #ff4444;
-  }
-
-  .expert-requests__label {
-    display: block;
-    margin-bottom: 5px;
-    height: 75px;
-  }
-  
-  input,
-  select {
-    width: 100%;
-    padding: 11px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    font-size: 1rem;
-    border: 1px solid #444;
-    border-radius: 8px;
-    background-color: #333;
-    color: #fff;
-  }
-  
- 
-  .popup-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  .save-button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: 500;
-    color: white;
-    background-color: #ff4444;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-  }
-  
-  .cancel-button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: 500;
-    color: #fff;
-    background-color: #444;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-  }
-
-  .popup input {
-    width: 93%;
-    margin-bottom: 20px;
-    font-size: 1rem;
-    border: 1px solid #444;
-    border-radius: 8px;
-    background-color: #333;
-    color: #fff;
-    transition: border-color 0.3s ease;
+  /* Стили для попапа */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
-/* Подтверждение отправки */
+.popup {
+  background: #2a2d31;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 800px; /* Увеличим ширину для лучшего отображения */
+  max-height: 80vh;
+  overflow-y: auto;
+  text-align: left;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.popup h3 {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ff4444;
+}
+
+.classification-form.two-columns {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.column {
+  flex: 1;
+}
+
+.column h4 {
+  margin: 0;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ff4444;
+}
+
+/* Обновленные стили для меток и полей */
+.expert-requests__label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px; /* Увеличенный отступ между элементами */
+  color: #ccc;
+}
+
+.expert-requests__label span {
+  margin-bottom: 5px; /* Отступ между надписью и полем */
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.input__expert,
+.select__expert {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background-color: #333;
+  color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.input__expert{
+  width: 95%;
+}
+
+.input__expert:focus,
+.select__expert:focus {
+  border-color: #ff4444;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.save-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  background-color: #ff4444;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.cancel-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: #444;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
 .confirmation-popup {
     position: fixed;
     top: 50%;
@@ -230,7 +231,7 @@
   }
   .add-component-button-wrapper {
     display: flex;
-    justify-content: center; /* Центрируем по горизонтали */
+    justify-content: center;
     margin-bottom: 20px;
   }
   
@@ -239,7 +240,7 @@
     font-size: 1rem;
     font-weight: 600;
     color: #fff;
-    background-color: #30c868; /* Ярко-зелёный */
+    background-color: #30c868;
     border: none;
     border-radius: 20px;
     cursor: pointer;
@@ -247,225 +248,6 @@
   }
   
   .add-component-button:hover {
-    background-color: #237a43; /* Тёмно-зелёный при наведении */
+    background-color: #237a43;
   }
   
-
-
-  /* Общие стили */
-/*body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #1a1a1a;
-    color: #ffffff;
-  }
-  
-  .expert-requests-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    padding: 2rem;
-    gap: 1.5rem;
-  }
-  
-  .tabs {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .tab-button {
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: 6px;
-    background-color: #2a2d31;
-    color: #ffffff;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .tab-button.active {
-    background-color: #ff4444;
-    color: #ffffff;
-  }
-  
-  .tab-button:hover:not(.active) {
-    background-color: #3a3d41;
-  }
-  
-  .requests-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .request-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background-color: #2a2d31;
-    border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
-    cursor: pointer;
-    transition: transform 0.2s ease;
-  }
-  
-  .request-item:hover {
-    transform: scale(1.02);
-  }
-  
-  .request-item.inactive {
-    opacity: 0.6;
-  }
-  
-  .request-name {
-    font-size: 1rem;
-    font-weight: bold;
-  }
-  
-  .request-date {
-    font-size: 0.9rem;
-    color: #cccccc;
-  }
-  
-  
-  .popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .popup {
-    background-color: #2a2d31;
-    border-radius: 10px;
-    padding: 2rem;
-    width: 80%;
-    max-width: 800px;
-    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
-    position: relative;
-  }
-  
-  .popup h3 {
-    margin-top: 0;
-    font-size: 1.5rem;
-    color: #ff4444;
-  }
-  
-  .classification-form {
-    display: flex;
-    gap: 2rem;
-    margin-top: 1rem;
-  }
-  
-  .column {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  label {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  input,
-  select {
-    padding: 0.5rem;
-    border: 2px solid #ff4444;
-    border-radius: 6px;
-    background-color: #1a1a1a;
-    color: #ffffff;
-    font-size: 1rem;
-  }
-  
-  input:focus,
-  select:focus {
-    outline: none;
-    border-color: #ff6666;
-  }
-  
-  .search-input {
-    position: relative;
-  }
-  
-  .search-results {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: #2a2d31;
-    border: 2px solid #ff4444;
-    border-radius: 6px;
-    max-height: 150px;
-    overflow-y: auto;
-    display: none;
-  }
-  
-  .search-results.visible {
-    display: block;
-  }
-  
-  .search-results div {
-    padding: 0.5rem;
-    cursor: pointer;
-  }
-  
-  .search-results div:hover {
-    background-color: #ff4444;
-    color: #ffffff;
-  }
-  
-  .popup-buttons {
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
-    margin-top: 1.5rem;
-  }
-  
-  .save-button,
-  .cancel-button {
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1rem;
-  }
-  
-  .save-button {
-    background-color: #ff4444;
-    color: #ffffff;
-  }
-  
-  .cancel-button {
-    background-color: #3a3d41;
-    color: #ffffff;
-  }
-  
-  .cancel-button:hover {
-    background-color: #4a4d51;
-  }
-  
-  .save-button:hover {
-    background-color: #ff6666;
-  }
-  
-  @media (max-width: 768px) {
-    .classification-form {
-      flex-direction: column;
-    }
-  
-    .popup {
-      width: 95%;
-    }
-  }*/

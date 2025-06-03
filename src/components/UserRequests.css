@@ -1,14 +1,12 @@
-/* Контейнер страницы */
 .user-requests-container {
   max-width: 1200px;
   margin: 40px auto;
   padding: 30px;
-  background: #2a2d31; /* Темный фон */
+  background: #2a2d31;
   border-radius: 12px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* Верхний текст и кнопка */
 .info-section {
   margin-bottom: 30px;
 }
@@ -17,7 +15,7 @@
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 15px;
-  color: #ccc; /* Светлый текст */
+  color: #ccc;
 }
 
 .create-request-button {
@@ -26,7 +24,7 @@
   font-size: 1rem;
   font-weight: 500;
   color: white;
-  background-color: #ff4444; /* Красный акцент */
+  background-color: #ff4444;
   border: none;
   border-radius: 20px;
   cursor: pointer;
@@ -35,10 +33,9 @@
 }
 
 .create-request-button:hover {
-  background-color: #e03d3d; /* Темнее при наведении */
+  background-color: #e03d3d;
 }
 
-/* Заголовок раздела "Мои заявки" */
 .title__ai{
   width: 100%;
   text-align: start;
@@ -52,11 +49,10 @@
 
 .section-title__ai {
   justify-self: flex-start;
-  color: #ff6666; /* Красный акцент */
+  color: #ff6666;
   margin-bottom: 20px;
 }
 
-/* Верхние вкладки (типы обработки) */
 .processing-tabs {
   display: flex;
   gap: 10px;
@@ -67,9 +63,9 @@
   padding: 15px 20px;
   font-size: 1rem;
   font-weight: 600;
-  color: #ccc; /* Светлый текст */
+  color: #ccc;
   background: transparent;
-  border: 2px solid #ff4444; /* Красная граница */
+  border: 2px solid #ff4444;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -77,22 +73,22 @@
 
 .processing-tab-button.active {
   color: #fff;
-  background-color: #ff4444; /* Ярко-красный фон */
+  background-color: #ff4444;
   border-color: #ff4444;
 }
 
 .processing-tab-button:hover:not(.active) {
-  background-color: rgba(255, 68, 68, 0.1); /* Полупрозрачный красный при наведении */
+  background-color: rgba(255, 68, 68, 0.1);
 }
 
-/* Контент вкладок обработки */
+
 .processing-content {
-  min-height: 400px; /* Унифицированная высота */
+  min-height: 400px;
   padding: 20px;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* Нижние вкладки (фильтрация заявок) */
+
 .request-tabs {
   display: flex;
   gap: 10px;
@@ -104,9 +100,9 @@
   padding: 10px 20px;
   font-size: 1rem;
   font-weight: 500;
-  color: #ccc; /* Светлый текст */
+  color: #ccc;
   background: transparent;
-  border: 1px solid #444; /* Темно-серая граница */
+  border: 1px solid #444;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -114,12 +110,12 @@
 
 .request-tab-button.active {
   color: #fff;
-  background-color: #3290f4; /* Синий акцент */
+  background-color: #3290f4;
   border-color: #007bff;
 }
 
 .request-tab-button:hover:not(.active) {
-  background-color: rgba(0, 123, 255, 0.1); /* Полупрозрачный синий при наведении */
+  background-color: rgba(0, 123, 255, 0.1);
 }
 
 /* Список заявок */
@@ -134,13 +130,13 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  background: #35383e; /* Начальный фон */
-  border: 1px solid #444; /* Темно-серая граница */
+  background: #35383e;
+  border: 1px solid #444;
   border-radius: 8px;
   transition: 
     transform 0.2s ease, 
-    background 0.2s ease, /* Плавное изменение фона */
-    box-shadow 0.2s ease; /* Плавное изменение тени */
+    background 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .request-item__user_solved {
@@ -149,25 +145,25 @@
 }
 
 .request-item__user:hover {
-  transform: translateY(-2px); /* Легкое смещение вверх */
-  background: #323a48; /* Цвет фона при наведении */
-  box-shadow: 0 4px 12px rgba(21, 36, 115, 0.2); /* Тень при наведении */
+  transform: translateY(-2px);
+  background: #323a48;
+  box-shadow: 0 4px 12px rgba(21, 36, 115, 0.2);
 }
 .request-name {
   font-size: 1rem;
   font-weight: 600;
-  color: #fff; /* Белый текст */
+  color: #fff;
 }
 
 .request-date {
   font-size: 0.9rem;
-  color: #aaa; /* Серый текст */
+  color: #aaa;
 }
 
 .empty-message {
   text-align: center;
   font-size: 1rem;
-  color: #888; /* Светло-серый текст */
+  color: #888;
 }
 
 /* Попап */
@@ -185,7 +181,7 @@
 }
 
 .popup {
-  background: #2a2d31; /* Темный фон */
+  background: #2a2d31;
   padding: 30px;
   border-radius: 12px;
   width: 400px;
@@ -198,24 +194,24 @@
   margin:0;
   font-size: 1.2rem;
   font-weight: 600;
-  color: #ff4444; /* Красный акцент */
+  color: #ff4444;
 }
 
-.popup input {
-  width: 93%;
+.input__user {
+  width: 96%;
   padding: 12px;
   margin-top: 20px;
   margin-bottom: 20px;
   font-size: 1rem;
-  border: 1px solid #444; /* Темно-серая граница */
+  border: 1px solid #444;
   border-radius: 8px;
-  background-color: #333; /* Более темный фон */
-  color: #fff; /* Белый текст */
+  background-color: #333;
+  color: #fff;
   transition: border-color 0.3s ease;
 }
 
 .popup input:focus {
-  border-color: #ff4444; /* Красная граница при фокусе */
+  border-color: #ff4444;
   outline: none;
 }
 
@@ -229,7 +225,7 @@
   font-size: 1rem;
   font-weight: 500;
   color: white;
-  background-color: #ff4444; /* Красный акцент */
+  background-color: #ff4444;
   border: none;
   border-radius: 20px;
   cursor: pointer;
@@ -237,15 +233,15 @@
 }
 
 .submit-button:hover {
-  background-color: #e03d3d; /* Темнее при наведении */
+  background-color: #e03d3d;
 }
 
 .cancel-button {
   padding: 10px 20px;
   font-size: 1rem;
   font-weight: 500;
-  color: #fff; /* Белый текст */
-  background-color: #444; /* Темно-серый фон */
+  color: #fff;
+  background-color: #444;
   border: none;
   border-radius: 20px;
   cursor: pointer;
@@ -253,21 +249,20 @@
 }
 
 .cancel-button:hover {
-  background-color: #555; /* Темнее при наведении */
+  background-color: #555;
 }
 
 .submit-button:disabled {
-  background-color: #888; /* Серый фон для неактивной кнопки */
-  color: #ccc; /* Светлый текст */
+  background-color: #888;
+  color: #ccc;
   cursor: not-allowed;
   border: none;
 }
 
 .submit-button:disabled:hover {
-  background-color: #888; /* Не меняется при наведении */
+  background-color: #888;
 }
 
-/* Блок AI-классификации */
 .ai-classification-section {
   display: flex;
   flex-direction: column;
@@ -280,7 +275,7 @@
 .ai-classification-text {
   font-size: 1rem;
   line-height: 1.6;
-  color: #ccc; /* Светлый текст */
+  color: #ccc;
   margin-bottom: 20px;
 }
 
@@ -288,16 +283,16 @@
   padding: 10px 20px;
   font-size: 1rem;
   font-weight: 500;
-  color: #fff; /* Белый текст */
-  background-color: #ff4444; /* Красный акцент */
+  color: #fff;
+  background-color: #ff4444;
   border: none;
   border-radius: 20px;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Плавная смена цвета фона */
+  transition: background-color 0.3s ease;
 }
 
 .ai-classification-button:hover {
-  background-color: #e03d3d; /* Темнее красный при наведении */
+  background-color: #e03d3d;
 }
 
 /* Контейнер для ввода и кнопки ИИ */
@@ -400,19 +395,17 @@
     border: 1px solid #121315;
   }
 
-  /* Стиль для оверлея уведомления */
-/* Стиль для затемнения экрана (overlay) */
 .popup-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  justify-content: center; /* Горизонтальное центрирование */
-  align-items: center; /* Вертикальное центрирование */
-  z-index: 1000; /* Попап создания заявки */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
 /* Стиль для блока попапа создания заявки */
@@ -424,7 +417,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   max-width: 400px;
   width: 100%;
-  z-index: 1001; /* Чтобы блок был поверх оверлея */
+  z-index: 1001;
 }
 
 /* Стиль для оверлея уведомления */
@@ -434,11 +427,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* Более темный фон */
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2000; /* Уведомление выше попапа */
+  z-index: 2000;
 }
 
 /* Стиль для блока с уведомлением */
@@ -451,7 +444,7 @@
   font-size: 1rem;
   text-align: center;
   max-width: 400px;
-  z-index: 2001; /* Чтобы блок был поверх оверлея */
+  z-index: 2001;
 }
 
 /* Анимация появления */

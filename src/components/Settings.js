@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './settings.css';
 
 const Settings = ({ profileData }) => {
-  // Инициализация состояния формы данными из profileData
   const [formData, setFormData] = useState({
     name: profileData?.name || '',
     surname: profileData?.surname || '',
@@ -11,13 +10,13 @@ const Settings = ({ profileData }) => {
     confirmPassword: '',
   });
 
-  const [activeTab, setActiveTab] = useState('personal'); // Переключение между вкладками
-  const [showNewPassword, setShowNewPassword] = useState(false); // Флаг для показа/скрытия нового пароля
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false); // Флаг для показа/скрытия подтверждения пароля
-  const [passwordMismatchError, setPasswordMismatchError] = useState(false); // Ошибка несовпадения паролей
-  const [showPasswordConditions, setShowPasswordConditions] = useState(false); // Флаг для отображения условий пароля
+  const [activeTab, setActiveTab] = useState('personal');
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [passwordMismatchError, setPasswordMismatchError] = useState(false);
+  const [showPasswordConditions, setShowPasswordConditions] = useState(false);
+  const [emailConflictError, setEmailConflictError] = useState(false);
 
-  // Обновление состояния формы при изменении profileData
   useEffect(() => {
     setFormData((prevData) => ({
       ...prevData,
@@ -34,25 +33,25 @@ const Settings = ({ profileData }) => {
       [name]: value,
     }));
 
-    // Если поле связано с паролем, проверяем его валидность
     if (name === 'newPassword') {
       validatePassword(value);
-      setShowPasswordConditions(value.trim() !== '' && !validatePassword(value)); // Показываем условия, если пароль не пустой и невалидный
+      setShowPasswordConditions(value.trim() !== '' && !validatePassword(value));
     }
 
-    // Сбрасываем ошибку несовпадения паролей при изменении любого из полей пароля
     if (name === 'newPassword' || name === 'confirmPassword') {
       setPasswordMismatchError(false);
     }
+
+    if (name === 'email') {
+      setEmailConflictError(false);
+    }
   };
 
-  // Функция для проверки валидности пароля
   const validatePassword = (password) => {
-    const passwordRegex = /^(?=.*[A-Z])[A-Za-z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]{6,}$/; // Минимум 6 символов, хотя бы одна заглавная буква
+    const passwordRegex = /^(?=.*[A-Z])[A-Za-z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]{6,}$/;
     return passwordRegex.test(password);
   };
 
-  // Функция для проверки, были ли внесены изменения
   const hasChanges = () => {
     if (activeTab === 'password') {
       return formData.newPassword.trim() !== '' || formData.confirmPassword.trim() !== '';
@@ -64,12 +63,10 @@ const Settings = ({ profileData }) => {
     );
   };
 
-  // Функция для проверки совпадения паролей
   const passwordsMatch = () => {
     return formData.newPassword === formData.confirmPassword;
   };
 
-  // Функция для проверки активности кнопки
   const isButtonDisabled = () => {
     if (activeTab === 'password') {
       return !hasChanges() || !passwordsMatch() || !validatePassword(formData.newPassword); // Кнопка отключена, если пароли не совпадают или пароль невалиден
@@ -81,16 +78,13 @@ const Settings = ({ profileData }) => {
     e.preventDefault();
 
     try {
-      const token = localStorage.getItem('token'); // Получаем токен из localStorage
-
+      const token = localStorage.getItem('token');
       if (activeTab === 'password') {
-        // Проверка совпадения паролей
         if (!passwordsMatch()) {
-          setPasswordMismatchError(true); // Устанавливаем флаг ошибки несовпадения паролей
+          setPasswordMismatchError(true);
           return;
         }
 
-        // Запрос на смену пароля
         const passwordResponse = await fetch('http://213.171.29.113:5000/user/change-password', {
           method: 'PATCH',
           headers: {
@@ -107,7 +101,6 @@ const Settings = ({ profileData }) => {
           throw new Error(errorData.message || 'Ошибка при смене пароля');
         }
 
-        // Очищаем поля формы после успешной смены пароля
         setFormData((prevData) => ({
           ...prevData,
           newPassword: '',
@@ -116,7 +109,6 @@ const Settings = ({ profileData }) => {
 
         alert('Пароль успешно изменен!');
       } else {
-        // Запрос на изменение личных данных
         const infoResponse = await fetch('http://213.171.29.113:5000/user/change-info', {
           method: 'PATCH',
           headers: {
@@ -124,7 +116,7 @@ const Settings = ({ profileData }) => {
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({
-            name: formData.name || '', // Если поле пустое, отправляем пустую строку
+            name: formData.name || '',
             surname: formData.surname || '',
             email: formData.email || '',
           }),
@@ -132,12 +124,17 @@ const Settings = ({ profileData }) => {
 
         if (!infoResponse.ok) {
           const errorData = await infoResponse.json();
+
+          if (infoResponse.status === 409) {
+            setEmailConflictError(true);
+            return;
+          }
+
           throw new Error(errorData.message || 'Ошибка при обновлении данных');
         }
 
         const updatedProfile = await infoResponse.json();
 
-        // Обновляем токен в localStorage
         const newToken = updatedProfile.token;
         if (newToken) {
           localStorage.setItem('token', newToken);
@@ -156,13 +153,13 @@ const Settings = ({ profileData }) => {
       {/* Вкладки */}
       <div className="settings-tabs">
         <button
-          className={`tab-button ${activeTab === 'personal' ? 'active' : ''}`}
+          className={`tab-button__settings ${activeTab === 'personal' ? 'active' : ''}`}
           onClick={() => setActiveTab('personal')}
         >
           Личные данные
         </button>
         <button
-          className={`tab-button ${activeTab === 'password' ? 'active' : ''}`}
+          className={`tab-button__settings ${activeTab === 'password' ? 'active' : ''}`}
           onClick={() => setActiveTab('password')}
         >
           Изменение пароля
@@ -206,6 +203,9 @@ const Settings = ({ profileData }) => {
                 required
               />
             </div>
+            {emailConflictError && (
+              <p className="error-message">Этот email уже используется другим пользователем.</p>
+            )}
           </>
         )}
 

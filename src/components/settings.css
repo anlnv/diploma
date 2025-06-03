@@ -21,7 +21,7 @@
     margin-bottom: 20px;
   }
   
-  .tab-button {
+  .tab-button__settings {
     padding: 10px 20px;
     background-color: transparent;
     border: 1px solid #ff4444;
@@ -32,7 +32,7 @@
     transition: all 0.3s ease;
   }
   
-  .tab-button.active {
+  .tab-button__settings.active {
     background-color: #ff4444;
     color: #ffffff;
   }

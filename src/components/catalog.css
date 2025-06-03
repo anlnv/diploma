@@ -1,115 +1,11 @@
-
-  /*.catalog-container {
-    display: flex;
-    gap: 16px;
-    padding: 20px;
-    background-color: #121212;
-    border-radius: 12px;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.7);
-    max-width: 1000px;
-    margin: 40px auto;
-  }
-  
-  .catalog-sidebar {
-    flex: 1;
-    background-color: #1e1e1e;
-    border-radius: 8px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .catalog-title {
-    margin: 0;
-    padding: 12px 16px;
-    background-color: #2a2a2a;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #ff5555;
-    border-bottom: 1px solid #333;
-  }
-  
-  .catalog-list {
-    flex: 1;
-    overflow-y: auto;
-  }
-  
-  .catalog-item {
-    padding: 12px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.95rem;
-    color: #ddd;
-    border-bottom: 1px solid #333;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-  }
-  
-  .catalog-item:hover {
-    background: linear-gradient(90deg, rgba(255,68,68,0.2), rgba(255,68,68,0));
-    transform: translateX(4px);
-  }
-  
-  .catalog-item.active {
-    background: #ff4444;
-    color: #fff;
-  }
-  
-  .arrow {
-    opacity: 0;
-    transition: opacity 0.2s;
-    font-size: 1rem;
-    color: #ff8888;
-  }
-  
-  .arrow.visible {
-    opacity: 1;
-  }
-  
-  .powers-list {
-    background-color: #2a2a2a;
-    margin: 4px 0 4px 24px;
-    border-left: 2px solid #ff5555;
-    border-radius: 0 4px 4px 0;
-    overflow: hidden;
-  }
-  
-  .power-item {
-    padding: 10px 16px;
-    color: #fff;
-    font-size: 0.9rem;
-    border-bottom: 1px solid #444;
-    transition: background 0.3s;
-  }
-  
-  .power-item:hover {
-    background: rgba(255,85,85,0.3);
-  }
-  
-  .catalog-list::-webkit-scrollbar {
-    width: 6px;
-  }
-  
-  .catalog-list::-webkit-scrollbar-thumb {
-    background-color: #333;
-    border-radius: 3px;
-  }
-  
-  .catalog-list::-webkit-scrollbar-track {
-    background-color: #1e1e1e;
-  }
-  */
-
-  .catalog-container {
+.catalog-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    padding: 20px;
-    height: calc(100vh - 40px);
+    padding:  0 20px 20px;
     background-color: rgba(18, 20, 23, 1);
-    margin: 20px 45px;
+    margin: 0px auto 20px;
+    max-width: 1200px;
   }
   
   .catalog-sidebar {
@@ -140,8 +36,8 @@
     justify-content: space-between;
     align-items: center;
     transition: all 0.3s ease;
-    position: relative; /* Убедимся, что элементы не выходят за границы */
-    background-color: transparent; /* Убираем лишний фон */
+    position: relative;
+    background-color: transparent;
   }
   
   .catalog-item:hover,
@@ -156,7 +52,7 @@
   }
   
   .arrow.visible {
-    visibility: visible; /* Показываем стрелку, если есть дочерние элементы */
+    visibility: visible;
     transform: rotate(90deg);
   }
   
@@ -178,91 +74,83 @@
   }
 
   .catalog-sidebar {
-    overflow-y: auto; /* Включаем вертикальную прокрутку */
+    overflow-y: auto;
   }
   
   .catalog-sidebar::-webkit-scrollbar {
-    width: 8px; /* Ширина скроллбара */
+    width: 8px;
   }
   
   .catalog-sidebar::-webkit-scrollbar-track {
-    background: #2a2d31; /* Цвет фона скроллбара */
+    background: #2a2d31;
     border-radius: 4px;
   }
   
   .catalog-sidebar::-webkit-scrollbar-thumb {
-    background: #ff4444; /* Цвет "бегунка" скроллбара */
+    background: #ff4444;
     border-radius: 4px;
   }
   
   .catalog-sidebar::-webkit-scrollbar-thumb:hover {
-    background: #ff6b6b; /* Цвет "бегунка" при наведении */
+    background: #ff6b6b;
   }
 
-/* Стили для контейнера списка элементов */
-.components-list { /* Отступ слева для отделения от других колонок */
-  padding: 16px; /* Внутренние отступы */
-  background-color: #2a2d31; /* Темный фон */
-  border-radius: 8px; /* Закругление углов */
-  max-width: 400px; /* Максимальная ширина */
-  color: #ffffff; /* Цвет текста */
+.components-list {
+  padding: 16px;
+  background-color: #2a2d31;
+  border-radius: 8px;
+  max-width: 400px;
+  color: #ffffff;
 }
 
-/* Заголовок списка элементов */
 .components-list h3 {
-  font-size: 1.2rem; /* Размер шрифта */
-  font-weight: bold; /* Жирный текст */
-  color: #ff4444; /* Акцентный цвет */
-  margin-bottom: 16px; /* Отступ снизу */
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ff4444;
+  margin-bottom: 16px;
 }
 
-/* Список элементов */
 .components-list ul {
-  list-style: none; /* Убираем маркеры списка */
-  padding: 0; /* Убираем отступы */
-  margin: 0; /* Убираем отступы */
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-/* Элемент списка */
 .components-list li.component-item {
-  padding: 12px; /* Внутренние отступы */
-  margin-bottom: 8px; /* Отступ между элементами */
-  border-radius: 4px; /* Закругление углов */
-  cursor: pointer; /* Курсор указывает на кликабельность */
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Плавный переход */
-  background-color: #1a1a1a; /* Фон элемента */
-  color: #cccccc; /* Цвет текста */
+  padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  background-color: #202020;
+  color: #cccccc;
 }
 
-/* Эффект наведения на элемент списка */
 .components-list li.component-item:hover {
-  background-color: #ff4444; /* Акцентный фон */
-  color: #ffffff; /* Белый текст */
-  transform: scale(1.02); /* Легкое увеличение */
+  background-color: #ff4444;
+  color: #ffffff;
+  transform: scale(1.02);
 }
 
-/* Активный элемент (при необходимости) */
 .components-list li.component-item.active {
-  background-color: #ff4444; /* Акцентный фон */
-  font-weight: bold; /* Жирный текст */
+  background-color: #ff4444;
+  font-weight: bold;
 }
 
-/* Ограничение высоты списка с прокруткой */
 .components-list ul.scrollable {
-  max-height: 350px; /* Максимальная высота */
-  overflow-y: auto; /* Вертикальная прокрутка */
+  max-height: 350px;
+  overflow-y: auto;
 }
 
-/* Стиль полосы прокрутки */
 .components-list ul.scrollable::-webkit-scrollbar {
-  width: 8px; /* Ширина полосы прокрутки */
+  width: 8px;
 }
 
 .components-list ul.scrollable::-webkit-scrollbar-thumb {
-  background-color: #ff4444; /* Цвет бегунка */
-  border-radius: 4px; /* Закругление бегунка */
+  background-color: #ff4444;
+  border-radius: 4px;
 }
 
 .components-list ul.scrollable::-webkit-scrollbar-track {
-  background-color: #1a1a1a; /* Цвет фона полосы прокрутки */
+  background-color: #1a1a1a;
 }

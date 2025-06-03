@@ -29,6 +29,7 @@
     font-weight: bold;
     color: #ff4444;
     margin: 0;
+    text-decoration: none;
   }
   
  
@@ -64,22 +65,20 @@
     background-color: #ff6b6b;
   }
 
-  /* Выделение ссылок для администратора */
 .admin-link {
-    color: #ff4444; /* Цвет текста для ссылок администратора */
-    font-weight: bold; /* Жирный шрифт */
+    color: #ff4444;
+    font-weight: bold;
   }
   
   .admin-link:hover {
-    color: #ff6b6b; /* Цвет текста при наведении */
+    color: #ff6b6b;
   }
-  
-  /* Выделение ссылок для эксперта */
+ 
   .expert-link {
-    color: #44aaff; /* Цвет текста для ссылок эксперта */
-    font-weight: bold; /* Жирный шрифт */
+    color: #44aaff;
+    font-weight: bold;
   }
   
   .expert-link:hover {
-    color: #6bbfff; /* Цвет текста при наведении */
+    color: #6bbfff;
   }

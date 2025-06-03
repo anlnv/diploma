@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './AdminUserList.css';
 
 const AdminUserList = () => {
-  const [users, setUsers] = useState([]); // Состояние для хранения пользователей
-  const [loading, setLoading] = useState(true); // Состояние загрузки
-  const [error, setError] = useState(''); // Состояние ошибки
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
-  // Загрузка данных с бэка
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -25,7 +24,6 @@ const AdminUserList = () => {
 
         const data = await response.json();
 
-        // Фильтруем пользователей: исключаем роль "admin"
         const filteredUsers = data.filter((user) => user.role !== 'admin');
         setUsers(filteredUsers);
         setLoading(false);
@@ -38,7 +36,6 @@ const AdminUserList = () => {
     fetchUsers();
   }, []);
 
-  // Функция для изменения роли пользователя через бэкенд
   const toggleExpertRole = async (userId, currentRole) => {
     const newRole = currentRole === 'expert' ? 'user' : 'expert';
 

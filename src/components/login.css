@@ -1,105 +1,3 @@
-/*.login-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    color: #ffffff;
-    font-family: 'Inter', sans-serif;
-  }
-  
-  .login-form {
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-    background-color: #2a2d31;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
-  }
-  
-  .login-title {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.5rem;
-    color: #ff4444;
-  }
-  
-  .form-group {
-    margin-bottom: 16px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 0.9rem;
-    color: #ff6b6b;
-  }
-  
-  .form-group input {
-    width: 94%;
-    padding: 12px;
-    border: 1px solid #ff4444;
-    border-radius: 7px;
-    background-color: transparent;
-    color: #ffffff;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
-  }
-  
-  .form-group input:focus {
-    border-color: #ff6b6b;
-    outline: none;
-  }
-  
-  .login-button {
-    width: 100%;
-    padding: 12px;
-    background-color: #ff4444;
-    border: none;
-    border-radius: 20px;
-    color: #ffffff;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .login-button:hover {
-    background-color: #ff6b6b;
-  }
-  
-  .register-link {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 0.9rem;
-    color: #ffffff;
-  }
-  
-  .link {
-    color: #ff4444;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  
-  .link:hover {
-    color: #ff6b6b;
-  }
-
-
-.error-message {
-    color: #ff4444;
-    font-size: 0.9rem;
-    text-align: center;
-    margin-bottom: 16px;
-  }
-  
-  
-  .success-message {
-    color: #4caf50;
-    font-size: 0.9rem;
-    text-align: center;
-    margin-bottom: 16px;
-  }*/
- /* Главный контейнер */
 .login-container {
     display: flex;
     flex-direction: column;
@@ -110,24 +8,21 @@
     width: 440px;
     margin: auto;
   }
-  
-  /* Заголовок формы */
+
   .login-title {
     text-align: center;
     margin-bottom: 20px;
     font-size: 1.5rem;
     color: #ff4444;
   }
-  
-  /* Сообщение об ошибке */
+
   .login-error {
     color: #ff4444;
     font-size: 0.9rem;
     text-align: center;
     margin-bottom: 16px;
   }
-  
-  /* Форма входа */
+
   .login-form {
     width: 100%;
     max-width: 400px;
@@ -136,20 +31,17 @@
     border-radius: 8px;
   }
   
-  /* Группа полей ввода */
   .login-input-group {
     margin-bottom: 16px;
   }
   
-  /* Лейбл для поля ввода */
   .login-label {
     display: block;
     margin-bottom: 8px;
     font-size: 0.9rem;
     color: #ff6b6b;
   }
-  
-  /* Поле ввода */
+
   .login-input {
     width: 94%;
     padding: 12px;
@@ -166,7 +58,6 @@
     outline: none;
   }
   
-  /* Кнопка отправки формы */
   .login-button {
     width: 100%;
     padding: 12px;
@@ -183,7 +74,6 @@
     background-color: #ff6b6b;
   }
   
-  /* Ссылка в нижней части формы */
   .login-footer {
     margin-top: 20px;
     text-align: center;

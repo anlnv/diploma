@@ -1,92 +1,3 @@
-// SearchBar.jsx
-/*import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './SearchBar.css';
-
-const SearchBar = () => {
-  const [query, setQuery] = useState('');
-  const [results, setResults] = useState([]);
-  const navigate = useNavigate();
-  const searchRef = useRef(null);
-
-  // Функция для отправки запроса на бэкенд
-  const fetchSearchResults = async (searchQuery) => {
-    if (!searchQuery.trim()) {
-      setResults([]); // Очищаем результаты, если строка пустая
-      return;
-    }
-
-    try {
-      const response = await fetch(`http://213.171.29.113:5000/ec/search/?name=${encodeURIComponent(searchQuery)}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setResults(data.slice(0, 10)); // Ограничиваем результаты до 10 элементов
-      } else {
-        console.error('Ошибка при выполнении поиска:', response.statusText);
-        setResults([]);
-      }
-    } catch (error) {
-      console.error('Ошибка сети:', error);
-      setResults([]);
-    }
-  };
-
-  // Эффект для отправки запроса при изменении строки поиска
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      fetchSearchResults(query); // Вызываем функцию поиска после задержки
-    }, 300);
-
-    return () => clearTimeout(timer); // Очищаем таймер при изменении запроса
-  }, [query]);
-
-  // Обработка нажатия Enter
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter' && results.length > 0 && query.trim()) {
-      navigate(`/component/${results[0].id}`); // Переходим к первому результату
-      setQuery('');
-    }
-  };
-
-  return (
-    <div className="search-container" ref={searchRef}>
-      <input
-        type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)} // Обновляем строку поиска
-        onKeyPress={handleKeyPress} // Обрабатываем нажатие Enter
-        className="search-input"
-        placeholder="Поиск компонентов..."
-      />
-
-      {query.length > 0 && results.length > 0 && (
-        <ul className="search-results">
-          {results.map((item, index) => (
-            <li
-              key={item.id}
-              className={`search-result-item ${index === 0 ? 'active' : ''}`}
-              onClick={() => {
-                navigate(`/component/${item.id}`); // Переход к странице компонента
-                setQuery('');
-              }}
-            >
-              {item.name}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-};
-
-export default SearchBar;*/
-
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import './SearchBar.css';
@@ -94,16 +5,15 @@ import './SearchBar.css';
 const SearchBar = () => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
-  const [isDropdownVisible, setIsDropdownVisible] = useState(false); // Состояние видимости выпадающего списка
-  const [noResultsMessage, setNoResultsMessage] = useState(false); // Флаг для сообщения "Ничего не найдено"
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const [noResultsMessage, setNoResultsMessage] = useState(false);
   const navigate = useNavigate();
   const searchRef = useRef(null);
 
-  // Функция для отправки запроса на бэкенд
   const fetchSearchResults = async (searchQuery) => {
     if (!searchQuery.trim()) {
-      setResults([]); // Очищаем результаты, если строка пустая
-      setIsDropdownVisible(false); // Скрываем выпадающий список
+      setResults([]);
+      setIsDropdownVisible(false);
       return;
     }
 
@@ -119,12 +29,10 @@ const SearchBar = () => {
         const data = await response.json();
 
         if (data.length === 0) {
-          // Если массив пустой, показываем сообщение "Ничего не найдено"
           setNoResultsMessage(true);
           setIsDropdownVisible(false);
         } else {
-          // Иначе отображаем результаты
-          setResults(data.slice(0, 10)); // Ограничиваем результаты до 10 элементов
+          setResults(data.slice(0, 10));
           setIsDropdownVisible(true);
           setNoResultsMessage(false);
         }
@@ -142,29 +50,26 @@ const SearchBar = () => {
     }
   };
 
-  // Эффект для отправки запроса при изменении строки поиска
   useEffect(() => {
     const timer = setTimeout(() => {
-      fetchSearchResults(query); // Вызываем функцию поиска после задержки
+      fetchSearchResults(query);
     }, 300);
 
-    return () => clearTimeout(timer); // Очищаем таймер при изменении запроса
+    return () => clearTimeout(timer);
   }, [query]);
 
-  // Обработка нажатия Enter
   const handleKeyPress = (e) => {
     if (e.key === 'Enter' && results.length > 0 && query.trim()) {
-      navigate(`/component/${results[0].id}`); // Переходим к первому результату
+      navigate(`/component/${results[0].id}`);
       setQuery('');
-      setIsDropdownVisible(false); // Скрываем выпадающий список
+      setIsDropdownVisible(false);
     }
   };
 
-  // Обработка клика вне области выпадающего списка
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (searchRef.current && !searchRef.current.contains(event.target)) {
-        setIsDropdownVisible(false); // Скрываем выпадающий список
+        setIsDropdownVisible(false);
       }
     };
 
@@ -177,8 +82,8 @@ const SearchBar = () => {
       <input
         type="text"
         value={query}
-        onChange={(e) => setQuery(e.target.value)} // Обновляем строку поиска
-        onKeyPress={handleKeyPress} // Обрабатываем нажатие Enter
+        onChange={(e) => setQuery(e.target.value)}
+        onKeyPress={handleKeyPress}
         className="search-input"
         placeholder="Поиск компонентов..."
       />
@@ -204,9 +109,9 @@ const SearchBar = () => {
               key={item.id}
               className={`search-result-item ${index === 0 ? 'active' : ''}`}
               onClick={() => {
-                navigate(`/component/${item.id}`); // Переход к странице компонента
+                navigate(`/component/${item.id}`);
                 setQuery('');
-                setIsDropdownVisible(false); // Скрываем выпадающий список
+                setIsDropdownVisible(false);
               }}
             >
               {item.name}

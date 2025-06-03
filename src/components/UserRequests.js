@@ -1,219 +1,33 @@
-/*import React, { useState, useEffect } from 'react';
-import './UserRequests.css';
-
-const UserRequests = ({ profileData }) => {
-  const [requests, setRequests] = useState([]); // Список всех заявок
-  const [processingTab, setProcessingTab] = useState('expert'); // Вкладка обработки: 'expert' или 'ai'
-  const [activeTab, setActiveTab] = useState('active'); // Вкладка заявок: 'active' или 'solved'
-  const [isPopupOpen, setIsPopupOpen] = useState(false); // Состояние попапа
-  const [newRequestName, setNewRequestName] = useState(''); // Название новой заявки
-
-  // Загрузка заявок при монтировании компонента
-  useEffect(() => {
-    fetchRequests();
-  }, []);
-
-  // Функция для загрузки заявок с сервера
-  const fetchRequests = async () => {
-    try {
-      const token = localStorage.getItem('token'); // Получаем токен из localStorage
-      const response = await fetch(`http://213.171.29.113:5000/requests/user/${profileData.id}`, {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error('Ошибка при загрузке заявок');
-      }
-
-      const data = await response.json();
-      setRequests(data);
-    } catch (error) {
-      console.error('Ошибка:', error.message);
-      alert(error.message);
-    }
-  };
-
-  // Функция для создания новой заявки
-  const createRequest = async () => {
-    try {
-      const token = localStorage.getItem('token'); // Получаем токен из localStorage
-      const response = await fetch('http://213.171.29.113:5000/requests/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ name: newRequestName }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Ошибка при создании заявки');
-      }
-
-      // Обновляем список заявок после успешного создания
-      fetchRequests();
-      setIsPopupOpen(false); // Закрываем попап
-      setNewRequestName(''); // Очищаем поле ввода
-    } catch (error) {
-      console.error('Ошибка:', error.message);
-      alert(error.message);
-    }
-  };
-
-  // Фильтрация заявок по активности
-  const activeRequests = requests.filter((request) => request.is_active);
-  const solvedRequests = requests.filter((request) => !request.is_active);
-
-  return (
-    <div className="user-requests-container">
-      <div className="processing-tabs">
-        <button
-          className={`processing-tab-button ${processingTab === 'expert' ? 'active' : ''}`}
-          onClick={() => setProcessingTab('expert')}
-        >
-          Экспертная классификация
-        </button>
-        <button
-          className={`processing-tab-button ${processingTab === 'ai' ? 'active' : ''}`}
-          onClick={() => setProcessingTab('ai')}
-        >
-          AI-классификация
-        </button>
-      </div>
-
-      <div className="processing-content">
-        {processingTab === 'expert' ? (
-          <>
-            <div className="info-section">
-              <p className="info-text">
-                Если Вы не нашли информации об электронном компоненте в нашем сервисе, Вы можете отправить
-                заявку на классификацию элемента нашими экспертами.
-              </p>
-              <button className="create-request-button" onClick={() => setIsPopupOpen(true)}>
-                Создать заявку
-              </button>
-            </div>
-
-            <div className="request-tabs">
-              <button
-                className={`request-tab-button ${activeTab === 'active' ? 'active' : ''}`}
-                onClick={() => setActiveTab('active')}
-              >
-                Активные заявки
-              </button>
-              <button
-                className={`request-tab-button ${activeTab === 'solved' ? 'active' : ''}`}
-                onClick={() => setActiveTab('solved')}
-              >
-                Обработанные заявки
-              </button>
-            </div>
-
-            <div className="requests-list">
-              {activeTab === 'active' ? (
-                activeRequests.length > 0 ? (
-                  activeRequests.map((request) => (
-                    <div key={request.id} className="request-item__user">
-                      <p className="request-name">{request.name}</p>
-                      <p className="request-date">{new Date(request.created_at).toLocaleDateString()}</p>
-                    </div>
-                  ))
-                ) : (
-                  <p className="empty-message">Нет активных заявок</p>
-                )
-              ) : solvedRequests.length > 0 ? (
-                solvedRequests.map((request) => (
-                  <div key={request.id} className="request-item__user">
-                    <p className="request-name">{request.name}</p>
-                    <p className="request-date">{new Date(request.created_at).toLocaleDateString()}</p>
-                  </div>
-                ))
-              ) : (
-                <p className="empty-message">Нет обработанных заявок</p>
-              )}
-            </div>
-          </>
-        ) : (
-          // Вкладка AI-классификация
-          <div className="ai-classification-section">
-            <p className="ai-classification-text">
-              Здесь вы можете в режиме реального времени классифицировать элемент с помощью искусственного
-              интеллекта.
-            </p>
-            <button className="ai-classification-button">Классифицировать с ИИ</button>
-          </div>
-        )}
-      </div>
-
-      {isPopupOpen && (
-        <div className="popup-overlay">
-          <div className="popup">
-            <h3>Создать заявку</h3>
-            <input
-              type="text"
-              placeholder="Введите название компонента"
-              value={newRequestName}
-              onChange={(e) => setNewRequestName(e.target.value)}
-            />
-            <div className="popup-buttons__user">
-              <button
-                className="submit-button"
-                onClick={createRequest}
-                disabled={!newRequestName.trim()} // Кнопка неактивна, если поле пустое
-              >
-                Создать
-              </button>
-              <button className="cancel-button" onClick={() => setIsPopupOpen(false)}>
-                Отмена
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
-
-export default UserRequests;*/
 import React, { useState, useEffect } from 'react';
 import './UserRequests.css';
 
 const UserRequests = ({ profileData }) => {
-  const [requests, setRequests] = useState([]); // Список всех заявок
-  const [processingTab, setProcessingTab] = useState('expert'); // Вкладка обработки: 'expert' или 'ai'
-  const [activeTab, setActiveTab] = useState('active'); // Вкладка заявок: 'active' или 'solved'
-  const [isPopupOpen, setIsPopupOpen] = useState(false); // Состояние попапа
-  const [newRequestName, setNewRequestName] = useState(''); // Название новой заявки
+  const [requests, setRequests] = useState([]);
+  const [processingTab, setProcessingTab] = useState('expert');
+  const [activeTab, setActiveTab] = useState('active');
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [newRequestName, setNewRequestName] = useState('');
 
-  // Состояния для AI-классификации
-  const [aiInput, setAiInput] = useState(''); // Ввод названия элемента для ИИ
-  const [isLoading, setIsLoading] = useState(false); // Загрузка при запросе к ИИ
-  const [aiResult, setAiResult] = useState(null); // Результат от ИИ
+  const [aiInput, setAiInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [aiResult, setAiResult] = useState(null);
 
-  // Уведомление
-  const [alertMessage, setAlertMessage] = useState(''); // Текст уведомления
-  const [isAlertVisible, setIsAlertVisible] = useState(false); // Видимость уведомления
+  const [alertMessage, setAlertMessage] = useState('');
+  const [isAlertVisible, setIsAlertVisible] = useState(false);
 
-  // Функция для показа уведомления
   const showAlert = (message) => {
     setAlertMessage(message);
     setIsAlertVisible(true);
 
-    // Автоматически скрыть уведомление через 3 секунды
     setTimeout(() => {
       setIsAlertVisible(false);
     }, 3000);
   };
 
-  // Загрузка заявок при монтировании компонента
   useEffect(() => {
     fetchRequests();
   }, []);
 
-  // Функция для загрузки заявок с сервера
   const fetchRequests = async () => {
     try {
       const token = localStorage.getItem('token');
@@ -234,9 +48,8 @@ const UserRequests = ({ profileData }) => {
     }
   };
 
-  // Проверка на существование заявки по названию элемента
   const checkExistingRequest = (name) => {
-    const lowerCaseName = name.toLowerCase(); // Приводим название к нижнему регистру
+    const lowerCaseName = name.toLowerCase();
     const existingActiveRequest = requests.find(
       (request) => request.name.toLowerCase() === lowerCaseName && request.is_active
     );
@@ -257,17 +70,14 @@ const UserRequests = ({ profileData }) => {
     return false;
   };
 
-  // Функция для создания новой заявки
   const createRequest = async () => {
     const trimmedName = newRequestName.trim();
 
-    // Проверяем, не пустое ли название
     if (!trimmedName) {
       showAlert('Введите название компонента');
       return;
     }
 
-    // Проверяем, существует ли такая заявка
     if (checkExistingRequest(trimmedName)) {
       return;
     }
@@ -287,20 +97,18 @@ const UserRequests = ({ profileData }) => {
         throw new Error('Ошибка при создании заявки');
       }
 
-      fetchRequests(); // Обновляем список заявок
-      setIsPopupOpen(false); // Закрываем попап
-      setNewRequestName(''); // Очищаем поле ввода
+      fetchRequests();
+      setIsPopupOpen(false);
+      setNewRequestName('');
     } catch (error) {
       console.error('Ошибка:', error.message);
       showAlert(error.message);
     }
   };
 
-  // Фильтрация заявок по активности
   const activeRequests = requests.filter((request) => request.is_active);
   const solvedRequests = requests.filter((request) => !request.is_active);
 
-  // Функция для отправки запроса в ИИ
   const classifyWithAI = async () => {
     if (!aiInput.trim()) {
       showAlert('Введите название элемента');
@@ -341,14 +149,12 @@ const UserRequests = ({ profileData }) => {
 
   return (
     <div className="user-requests-container">
-      {/* Уведомление */}
       {isAlertVisible && (
         <div className="alert-overlay">
           <div className="alert-box">{alertMessage}</div>
         </div>
       )}
 
-      {/* Верхние вкладки для выбора типа обработки */}
       <div className="processing-tabs">
         <button
           className={`processing-tab-button ${processingTab === 'expert' ? 'active' : ''}`}
@@ -364,11 +170,9 @@ const UserRequests = ({ profileData }) => {
         </button>
       </div>
 
-      {/* Контент вкладок обработки */}
       <div className="processing-content">
         {processingTab === 'expert' ? (
           <>
-            {/* Верхний текст и кнопка "Создать заявку" */}
             <div className="info-section">
               <p className="info-text">
                 Если Вы не нашли информации об электронном компоненте в нашем сервисе, Вы можете отправить
@@ -379,7 +183,6 @@ const UserRequests = ({ profileData }) => {
               </button>
             </div>
 
-            {/* Нижние вкладки для фильтрации заявок */}
             <div className="request-tabs">
               <button
                 className={`request-tab-button ${activeTab === 'active' ? 'active' : ''}`}
@@ -395,7 +198,6 @@ const UserRequests = ({ profileData }) => {
               </button>
             </div>
 
-            {/* Список заявок */}
             <div className="requests-list">
               {activeTab === 'active' ? (
                 activeRequests.length > 0 ? (
@@ -421,7 +223,6 @@ const UserRequests = ({ profileData }) => {
             </div>
           </>
         ) : (
-          // Вкладка AI-классификация
           <div className="ai-classification-section">
             <p className="ai-classification-text">
               Здесь вы можете в режиме реального времени классифицировать элемент с помощью искусственного
@@ -523,6 +324,7 @@ const UserRequests = ({ profileData }) => {
           <div className="popup">
             <h3>Создать заявку</h3>
             <input
+            className='input__user'
               type="text"
               placeholder="Введите название компонента"
               value={newRequestName}
